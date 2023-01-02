@@ -9,6 +9,7 @@ const inquirer=require('inquirer');
 const path=require('path');
 // import fs with require()
 const fs=require('fs');
+const createTeam = require('./src/page-template')
 
 // 2.
 // import page-template.js from subfoler src with require and assign it to a variable to be called later to render html
@@ -62,7 +63,7 @@ inquirer
 
 .then(answer=>{
     const manager = new Manager(answer.name, answer.id, answer.office)
-    member.push(manager);
+    employeeMember.push(manager);
     employeeId.push(manager);
     team();
 
@@ -81,18 +82,24 @@ function team(){
     .prompt([
         {
             type: 'list',
-            name: 'team list',
+            name: 'teamList',
             message: 'What type of employee do you want to add to your profile?',
             choices:[
-                'Manager',
                 'Engineer',
                 'Intern',
                 'I am all done',
             ]
-        }])
-
-    }
-
+        }]).then(answer=>{
+          console.log(answer);
+          if (answer.teamList === 'Engineer'){
+            addEngineer();
+          }else if (answer.teamList === 'Intern'){
+            addIntern();
+          }else {
+            buildHtml();
+          }
+    })
+  }
 
 
 
@@ -130,7 +137,7 @@ function addEngineer(){
 
     ]).then(answer=>{
         const engineer = new Engineer(answer.name, answer.id, answer.office)
-        member.push(engineer);
+        employeeMember.push(engineer);
         employeeId.push(engineer);
         team();
     
@@ -175,7 +182,7 @@ function addIntern(){
         },
     ]).then(answer=>{
         const intern = new Intern(answer.name, answer.id, answer.office)
-        member.push(intern);
+        employeeMember.push(intern);
         employeeId.push(intern);
         team();
     
@@ -197,7 +204,9 @@ function addIntern(){
 function buildHtml () {
     console.log("File Created")
 
-    fs.writeFileSync(outputPath, generateTeam(employeeMember), "UTF-8")
+    fs.writeFile('index.html', createTeam(employeeMember), (err) =>
+      err ? console.log(err) : console.log('Successfully created')
+    );
 
 }
-team();
+

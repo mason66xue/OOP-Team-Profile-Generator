@@ -3,7 +3,7 @@ const Manager = require("../lib/Manager");
 
 // create team function with team array passed in
 const create_team_function = team => {
-
+console.log(team);
     // create the manager html function with manager object passed in as input parameter
     // - return template literal replacing name, role, id, email, office number with getXXX methods from manager object
     const create_manager_html_function = manager => {
@@ -91,7 +91,7 @@ const create_team_function = team => {
 
 // export function to generate entire page with team array passed in as input parameter from index.js
 // - return template literal for entire html replacing team member html with returned value from create-team-function via template literal varaible expression
-module.exports = team => {
+function createTeam(data) {
 
     return `
     <div class="card">
@@ -100,9 +100,10 @@ module.exports = team => {
     </div>
     <div class="card-body">
       <h5 class="card-title">Team Member</h5>
-      <p class="card-text">${create_team_function(team)}</p>
+      <p class="card-text">${create_team_function(data)}</p>
       
     </div>
   </div>
     `;
 };
+module.exports= createTeam;
