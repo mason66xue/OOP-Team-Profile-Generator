@@ -1,12 +1,27 @@
 const Employee = require("../lib/Employee");
 const Manager = require("../lib/Manager");
 
+
 // create team function with team array passed in
-const create_team_function = team => {
+const create_team_function = (team) => {
 //need a for loop to loop over the team members 
+for (let i=0; i<team.length; i++){
+  if (team[i].getRole=== 'manager'){
+    console.log('adding manager to html');
+    create_manager_html_function(team[i]);
+}
+if (team[i].getRole=== 'engineer'){
+  console.log('adding engineer to html');
+  create_engineer_html_function(team[i]);
+}
+if (team[i].getRole=== 'intern'){
+  console.log('adding intern to html');
+  create_intern_html_function(team[i]);
+}
+}
     // create the manager html function with manager object passed in as input parameter
     // - return template literal replacing name, role, id, email, office number with getXXX methods from manager object
-    const create_manager_html_function = manager => {
+    const create_manager_html_function = (manager) => {
         return `
         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-header">${manager.getName()}</div>
@@ -21,7 +36,7 @@ const create_team_function = team => {
 
     // create the html function for engineers with engineer object passed in as input parameter
     // - return template literal replacing name, role, id, email, github name with getXXX methods from engineer object
-    const create_engineer_html_function = engineer => {
+    const create_engineer_html_function = (engineer) => {
         return `
         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-header">${engineer.getName()}</div>
@@ -36,7 +51,7 @@ const create_team_function = team => {
 
     // create the html function for interns with intern object passed in as input parameter
     // - return template literal replacing name, role, id, email, school name with getXXX methods from intern object
-    const create_intern_html_function = intern => {
+    const create_intern_html_function = (intern) => {
         return `
         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-header">${intern.getName()}</div>
