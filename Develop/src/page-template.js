@@ -7,67 +7,59 @@ const internTeamHtml="";
 
 // create team function with team array passed in
 const create_team_function = (team) => {
+  let newTeam = [];
 //need a for loop to loop over the team members 
-// for (let i=0; i<team.length; i++){
-//   if (team[i].getRole=== 'manager'){
-//     console.log('adding manager to html');
-//     create_manager_html_function(team[i]);
-// }
-// if (team[i].getRole=== 'engineer'){
-//   console.log('adding engineer to html');
-//   create_engineer_html_function(team[i]);
-// }
-// if (team[i].getRole=== 'intern'){
-//   console.log('adding intern to html');
-//   create_intern_html_function(team[i]);
-// }
-// }
+
+
     // create the manager html function with manager object passed in as input parameter
     // - return template literal replacing name, role, id, email, office number with getXXX methods from manager object
     const create_manager_html_function = (manager) => {
-        let managerHtml= `
+      console.log(manager);
+        return `
         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-header">${manager.getName()}</div>
         <div class="card-body">
           <h5 class="card-title"></h5>
-          <li class="body-item">ID:${manager.getID()}</li>
+          <li class="body-item">ID:${manager.getId()}</li>
           <li class="body-item">Email:${manager.getEmail()}</li>
           <li class="body-item">Office:${manager.getOfficeNumber()}</li>
         </div>
         `;
-        managerTeamHtml+=managerHtml;
+        
     };
 
     // create the html function for engineers with engineer object passed in as input parameter
     // - return template literal replacing name, role, id, email, github name with getXXX methods from engineer object
     const create_engineer_html_function = (engineer) => {
-        let enginnerHtml=`
+      console.log(engineer);
+        return`
         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-header">${engineer.getName()}</div>
         <div class="card-body">
           <h5 class="card-title"></h5>
-          <li class="body-item">ID:${engineer.getID()}</li>
+          <li class="body-item">ID:${engineer.getId()}</li>
           <li class="body-item">Email:${engineer.getEmail()}</li>
           <li class="body-item">Github:${engineer.getGithub()}</li>
         </div>
         `;
-        engineerTeamHtml+=enginnerHtml;
+       
     };
 
     // create the html function for interns with intern object passed in as input parameter
     // - return template literal replacing name, role, id, email, school name with getXXX methods from intern object
     const create_intern_html_function = (intern) => {
-        let internHtml= `
+      console.log(intern);
+        return `
         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-header">${intern.getName()}</div>
         <div class="card-body">
           <h5 class="card-title"></h5>
-          <li class="body-item">ID:${intern.getID()}</li>
+          <li class="body-item">ID:${intern.getId()}</li>
           <li class="body-item">Email:${intern.getEmail()}</li>
           <li class="body-item">School:${intern.getSchool()}</li>
         </div>
         `;
-        internTeamHtml+=internHtml;
+        
     };
 
     // create an empty employee html array to store employee html for manager, engineers, interns
@@ -106,14 +98,29 @@ const create_team_function = (team) => {
     // );
 
     // call join method on employee html array to convert it to html string and return it to the caller
-    return html.join("");
+    for (let i=0; i<team.length; i++){
+      if (team[i].getRole()=== 'Manager'){
+        console.log('adding manager to html');
+        console.log("Creating Manager",team[i])
+        newTeam.push(create_manager_html_function(team[i]));
+    }
+    if (team[i].getRole()=== 'Engineer'){
+      console.log('adding engineer to html');
+      newTeam.push(create_engineer_html_function(team[i]));
+    }
+    if (team[i].getRole()=== 'Intern'){
+      console.log('adding intern to html');
+      newTeam.push(create_intern_html_function(team[i]));
 
+    }
+
+  }
+  return newTeam;
 }
 
 // export function to generate entire page with team array passed in as input parameter from index.js
 // - return template literal for entire html replacing team member html with returned value from create-team-function via template literal varaible expression
-function createTeam(data) {
-
+function createTeam(employee) {
     return `
     <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -128,12 +135,11 @@ function createTeam(data) {
       My Team
     </div>
     <div class="card-body">
-      <h5 class="card-title">Team Member</h5>
-      <p class="card-text">${managerTeamHtml}</p>
-      <p class="card-text">${engineerTeamHtml}</p>
-      <p class="card-text">${internTeamHtml}</p>
+      ${create_team_function(employee)}
     </div>
   </div>
     `;
+
+    
 };
 module.exports= createTeam;
