@@ -1,7 +1,7 @@
 // 1.
-const Manager=require('./lib/Manager');
-const Engineer=require('./lib/Engineer');
-const Intern=require('./lib/Intern');
+const Manager=require('../lib/Manager');
+const Engineer=require('../lib/Engineer');
+const Intern=require('../lib/Intern');
 // import manager, engineer, intern files with require()
 // import inquirer with require()
 const inquirer=require('inquirer');
@@ -9,11 +9,11 @@ const inquirer=require('inquirer');
 const path=require('path');
 // import fs with require()
 const fs=require('fs');
-const createTeam = require('./src/page-template')
+const createTeam = require('../src/page-template')
 
 // 2.
 // import page-template.js from subfoler src with require and assign it to a variable to be called later to render html
-const html=require('./src/page-template');
+const html=require('../src/page-template');
 // 3.
 // create variable to hold the path to dist subfolder using path lib resolve method
 // create variable to hold the path to team.html using path lib join method
