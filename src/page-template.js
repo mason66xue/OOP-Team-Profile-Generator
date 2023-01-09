@@ -17,12 +17,12 @@ const create_team_function = (team) => {
       console.log(manager);
         return `
         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">${manager.getName()}</div>
+        <div class="card-header">${manager.name}</div>
         <div class="card-body">
           <h5 class="card-title"></h5>
-          <li class="body-item">ID:${manager.getId()}</li>
-          <li class="body-item">Email:${manager.getEmail()}</li>
-          <li class="body-item">Office:${manager.getOfficeNumber()}</li>
+          <li class="body-item">ID:${manager.id}</li>
+          <li class="body-item">Email:${manager.email}</li>
+          <li class="body-item">Office:${manager.officeNumber}</li>
         </div>
         `;
         
