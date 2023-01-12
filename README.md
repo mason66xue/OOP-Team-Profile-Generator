@@ -1,6 +1,9 @@
 # OOP-Team-Profile-Generator
 Welcome to my profile generator. The purpose for me to build this team profile generator is because it is a easy way for companies to manage their employees. By answering some simple questions from the NODE, users can easily make up a quick and easy profile on the website. 
 
+[Untitled_ Jan 11, 2023 8_25 PM.webm](https://user-images.githubusercontent.com/117794323/211954466-2ffaccef-676b-4e26-a299-c998ef734444.webm)
+
+
 
 ## Table of Contents
 
