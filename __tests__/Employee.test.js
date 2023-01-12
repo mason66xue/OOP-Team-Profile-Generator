@@ -15,16 +15,16 @@ test("name", () => {
 
 // Test setting id of an employee
 test("id", () => {
-  const id = 110;
-  const employeeInstance = new Employee(id);
-  expect(employeeInstance.id()).toBe(id);
+  const employeeId = 110;
+  const employeeInstance = new Employee('ruochen',employeeId);
+  expect(employeeInstance.id).toBe(employeeId);
 });
 
 // Test setting email of an employee
 test("email", () => {
-  const email= 'ruochen@test.com';
-  const employeeInstance= new Employee(email);
-  expect (employeeInstance.email()).toBe(email);
+  const myEmail= 'ruochen@test.com';
+  const employeeInstance= new Employee('ruochen', 110, 'ruochen@test.com');
+  expect (employeeInstance.email).toBe(myEmail);
 });
 
 // Test get name method

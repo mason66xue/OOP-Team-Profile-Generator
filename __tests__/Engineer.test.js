@@ -1,11 +1,12 @@
 // Import Engineer class with require()
-const Employee = require('../lib/Employee');
+const Engineer = require('../lib/Engineer');
+
 
 // // Test setting github account
 test("github", () => {
   const gitHub = 'mason66xue';
-  const employeeInstance = new Engineer('ruochen',111, 'ruochen@test.com', 'gitHub');
-  expect(employeeInstance.gitHub()).toBe(gitHub);
+  const employeeInstance = new Engineer('ruochen',111, 'ruochen@test.com', gitHub);
+  expect(employeeInstance.getGithub()).toBe(gitHub);
 
 });
 
@@ -19,6 +20,6 @@ test("getRole", () => {
 // Test get github method
 test("getGithub", () => {
   const testGithub = 'mason66xue';
-  const employeeInstance = new Employee('ruochen', 111, 'ruochen@test.com','mason66xue');
-  expect(employeeInstance.testGithub()).toBe(testGithub);
+  const employeeInstance = new Engineer('ruochen', 111, 'ruochen@test.com','mason66xue');
+  expect(employeeInstance.getGithub()).toBe(testGithub);
 });
